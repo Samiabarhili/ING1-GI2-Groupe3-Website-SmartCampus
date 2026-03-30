@@ -1,1 +1,1 @@
-# ING1-GI2-C-Website-Graph-Project
+# ING1-GI2-Groupe3-Website-Graph-Project
