@@ -1,11 +1,55 @@
+
 # 🎓 Smart Campus — Plateforme IoT Intelligente
 
-> Projet Développement Web — ING1 2025-2026 | CY Tech  
+> Projet Développement Web — Groupe C — ING1 2025-2026 | CY Tech  
 > Thème : **Université/École Intelligente**
 
 ## 📋 Description
 
 Smart Campus est une plateforme numérique intelligente pour la gestion d'une université connectée. Elle centralise la surveillance des objets IoT (thermostats, caméras, éclairages, capteurs…), les actualités du campus, et les outils de gestion des ressources.
+
+--- 
+
+# ⚡ GUIDE DE LANCEMENT RAPIDE (Smart Campus)
+
+> **IMPORTANT :** Respectez l'ordre 0 ➔ 1 ➔ 2 ➔ 3.
+
+---
+
+## 0️⃣ PREMIÈRE FOIS ? (Installation)
+*À ne faire qu'une seule fois après avoir téléchargé le projet pour créer les dossiers `node_modules`.*
+
+1. Télécharger le dossier
+2. Ouvrir un terminal dans `/backend` ➔ taper : `npm install`
+3. Ouvrir un terminal dans `/frontend` ➔ taper : `npm install`
+
+---
+
+## 1️⃣ SQL (La Base)
+* **Action :** Ouvrir **WampServer** ou **XAMPP**.
+* **Base :** `smart_campus` doit être présente.
+
+---
+
+## 2️⃣ BACKEND (Le Serveur)
+* **Emplacement :** `/backend`
+* **Commande :** ```npm start ```
+
+## 3️⃣ FRONTEND (L'Interface)
+* **Emplacement :** `/frontend`
+* **Commande :** ```
+   npm run dev ```
+
+* **Lien :** Cliquez sur [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🛠️ DÉPANNAGE RAPIDE
+
+* **Le backend crash ?** Vérifie le fichier `.env` (MDP : `cytech0001`).
+* **Erreur de Login ?** Va en SQL -> Table `users` -> Mets `is_approved = 1` pour ton compte.
+* **"Command not found" ?** Vérifie que tu as bien fait l'étape **0️⃣**.
+
 
 ---
 
@@ -22,6 +66,7 @@ Smart Campus est une plateforme numérique intelligente pour la gestion d'une un
 | Icons      | Lucide React            |
 
 ---
+
 
 ## 🚀 Installation & Lancement
 
@@ -151,15 +196,6 @@ smart-campus/
 - Suivi consommation énergétique
 - Identification des objets défaillants
 
-### Module Administration (Admin — expert)
-- Gestion complète des utilisateurs (CRUD)
-- Approbation des inscriptions
-- Attribution/modification des niveaux
-- Gestion des objets IoT
-- Traitement des demandes de suppression
-- Publication d'actualités et d'événements
-- Journaux de connexion
-- Top utilisateurs par points
 
 ---
 
@@ -250,3 +286,4 @@ Le fichier `database/schema.sql` contient :
 ---
 
 *Projet réalisé dans le cadre du cours de Développement Web — CY Tech ING1 2025-2026*
+>>>>>>> 8d696fec33917a25553435002e33938ac98a7b81
