@@ -132,9 +132,91 @@ app.post('/register', async (req, res) => {
   }
 });
 
+// ── ROUTE POUR RECUPERER LES SALLES
+app.get('/rooms', (req, res) => {
+  const sql = 'SELECT * FROM rooms'; // Tu récupères toutes les salles de la table rooms
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Erreur rooms:', err);
+      return res.status(500).json({ message: 'Erreur serveur' });
+    }
+
+    res.json(results); // Envoie les résultats sous forme de JSON
+  });
+});
+
+// ── ROUTE POUR RECUPERER LES OBJETS CONNECTES
+app.get('/devices', (req, res) => {
+  const sql = `
+    SELECT 
+      d.id,
+      d.uid,
+      d.name,
+      d.status,
+      r.name AS room_name,
+      c.name AS category_name
+    FROM devices d
+    LEFT JOIN rooms r ON d.room_id = r.id
+    LEFT JOIN device_categories c ON d.category_id = c.id
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Erreur devices :', err);
+      return res.status(500).json({ message: 'Erreur devices' });
+    }
+
+    res.json(results); // Retourne les résultats des objets connectés et les salles associées
+  });
+});
+
+
+app.get('/rooms/:id', (req, res) => {
+  const roomId = req.params.id;
+
+  const sql = `
+    SELECT 
+      r.id,
+      r.name,
+      r.building,
+      r.floor,
+      r.capacity,
+      r.description,
+      d.id AS device_id,
+      d.name AS device_name,
+      d.status AS device_status,
+      c.name AS category_name
+    FROM rooms r
+    LEFT JOIN devices d ON d.room_id = r.id
+    LEFT JOIN device_categories c ON d.category_id = c.id
+    WHERE r.id = ?
+  `;
+
+  db.query(sql, [roomId], (err, results) => {
+    if (err) {
+      console.error('Erreur pour récupérer les détails de la salle :', err);
+      return res.status(500).json({ message: 'Erreur serveur' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Salle non trouvée' });
+    }
+
+    res.json(results);  // Renvoie la salle et les objets associés
+  });
+});
+
+
+
+// ── HEALTH CHECK
+app.get('/api/health', (_req, res) => res.json({ status: 'ok', timestamp: new Date() }));
+
 // ── 404
 app.use((_req, res) => res.status(404).json({ message: 'Route introuvable.' }));
 
-// ── Start
+// ── Démarrage du serveur
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅  Smart Campus API running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅  Smart Campus API running on http://localhost:${PORT}`);
+});

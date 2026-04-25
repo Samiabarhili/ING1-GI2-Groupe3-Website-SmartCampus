@@ -1,0 +1,55 @@
+/* ================================================
+   Rooms — Page Styles (Unified with Home)
+   ================================================ */
+
+.rooms-page {
+  padding: 40px 6%;
+  background: #f6f8fc;
+}
+
+.campus-map-section {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.map-container img {
+  width: 80%;
+  max-width: 1000px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.rooms-section {
+  margin-bottom: 20px;
+}
+
+/* === ROOMS GRID — Flexbox 3 Colonnes === */
+.rooms-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.rooms-grid .room-card {
+  width: calc(33.333% - 14px); /* 3 colonnes avec gap */
+  flex-shrink: 0;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .rooms-grid .room-card {
+    width: calc(50% - 10px); /* 2 colonnes sur tablette */
+  }
+}
+
+@media (max-width: 768px) {
+  .rooms-grid {
+    flex-direction: column;
+  }
+  
+  .rooms-grid .room-card {
+    width: 100%; /* 1 colonne sur mobile */
+  }
+}

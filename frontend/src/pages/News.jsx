@@ -21,11 +21,6 @@ function NewsPage() {
               de notre université.
             </p>
           </div>
-
-          <div className="top-right-buttons">
-            <button className="circle-btn">⚙️</button>
-            <button className="lang-btn">FR</button>
-          </div>
         </section>
 
         <section className="news-grid">
@@ -57,9 +52,7 @@ function NewsPage() {
           />
         </section>
 
-        <div className="bottom-action">
-          <button className="all-news-btn">Voir toutes les actualités</button>
-        </div>
+        
 
         <button className="scroll-top">↑</button>
       </main>
